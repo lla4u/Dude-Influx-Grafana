@@ -3,11 +3,11 @@
 > Each SkyView HDX display can act as a Primary Flight Display (PFD) with Synthetic Vision, an
 Engine Monitoring System (EMS), and a Moving Map in a variety of customizable screen
 layouts. Data is sourced from various connected modules and devices.
-
+>
 > SkyView HDX displays record and store flight information in several datalogs which can be
 exported for analysis by the owner, and a high-resolution datalog which can be used by Dynon
 for troubleshooting. 
-
+>
 > This tooling intend to provide an easy and efficient way to:  
 >  - Provide long term flight history,
 >  - Provide capability to display flight map and related parameters for improving pilote usage,
