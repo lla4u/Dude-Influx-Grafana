@@ -19,6 +19,9 @@ for troubleshooting.
 > Nodejs for onboarding Dynon datalogs into InfluxDB.
 > All of them are open source and free for personal usage.
 
+## What is provided
+> A local web interface to query flight data shuch as:
+![Screenshot of web interface.](https://myoctocat.com/assets/images/base-octocat.svg)
 
 ## Valorize Dynon HDX export data providing data visualization capability and long terme savings
 
