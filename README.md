@@ -14,9 +14,10 @@ for troubleshooting.
 >  - ...
 
 ## What are the dependencies
-> InfluxDB for timed long term storage
-> Gafana for data presentation
-> Nodejs for onboarding Dynon datalogs into InfluxDB.
+> - InfluxDB for timed long term storage
+> - Gafana for data presentation
+> - Nodejs for onboarding Dynon datalogs into InfluxDB.
+>
 > All of them are open source and free for personal usage.
 
 ## What is provided
