@@ -8,7 +8,7 @@ layouts. Data is sourced from various connected modules and devices.
 exported for analysis by the owner, and a high-resolution datalog which can be used by Dynon
 for troubleshooting. 
 >
-> This tooling intend to provide an easy and efficient way to:  
+> This tooling intend to use on an easy and efficient way the datalogs to:  
 >  - Provide long term flight history,
 >  - Provide capability to display flight map and related parameters for improving pilote usage,
 >  - ...
