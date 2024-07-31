@@ -13,6 +13,12 @@ for troubleshooting.
 >  - Provide capability to display flight map and related parameters for improving pilote usage,
 >  - ...
 
+## What are the dependencies
+> InfluxDB for timed long term storage
+> Gafana for data presentation
+> Nodejs for onboarding Dynon datalogs into InfluxDB.
+> All of them are open source and free for personal usage.
+
 
 ## Valorize Dynon HDX export data providing data visualization capability and long terme savings
 
