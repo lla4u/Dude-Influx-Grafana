@@ -10,7 +10,8 @@ for troubleshooting.
 >
 > This tooling intend to use on an easy and efficient way the datalogs to:  
 >  - Provide long term flight history,
->  - Provide capability to display flight map and related parameters for improving pilote usage,
+>  - Provide capability to display flight map and related parameters for improving pilote usage and safety,
+>  - Provide accurate informations like what is my average speed to considere preparing flight, what is my average landing speed,
 >  - ...
 
 ## What are the dependencies
@@ -71,18 +72,18 @@ https://docs.docker.com/get-docker/
 > 3. Navigate to ...
 
 ## Importing datalog into InfluxDB
-> 1. copy the USER_DATA_LOG.csv file(s) into your datalogs directory
+> 1. copy the usb key csv file(s) (USER_DATA_LOG.csv) into your datalogs directory
 > 2. from teminal or cmd or powershell (windows) execute docker run -it dude-cli bash
 > 3. Select the file(s) from the provided list (space bar) and press Enter to import ...
 >
-> Depending your laptop you might have issue selecting high count of files (Influxdb write error)
+> Depending your laptop you might have influxDB write issue selecting high count of files.  
 > I am on it for fixing. Any help are welcome.
 
 # Todos
-> - Make Grafana Dashboard(s) & Data source configuration automatically imported
+> - Make Grafana Dashboard(s) & Data source configuration automatically imported 
 > - Use Grafana variable to help finding the flights saved into the InfluxDB.
 
-Have a safe flights.
+Have a safe flights.  
 Laurent
 
 
