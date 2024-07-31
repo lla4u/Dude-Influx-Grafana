@@ -21,7 +21,7 @@ for troubleshooting.
 
 ## What is provided
 > A local web interface to query flight data shuch as:
-![Screenshot of web interface.](https://myoctocat.com/assets/images/base-octocat.svg)
+![Screenshot of web interface.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_web_Interface.png)
 
 ## Valorize Dynon HDX export data providing data visualization capability and long terme savings
 
