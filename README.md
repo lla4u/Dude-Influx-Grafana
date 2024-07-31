@@ -76,12 +76,14 @@ https://docs.docker.com/get-docker/
 > 2. from teminal or cmd or powershell (windows) execute docker run -it dude-cli bash
 > 3. Select the file(s) from the provided list (space bar) and press Enter to import ...
 >
+> [!CAUTION]
 > Depending your laptop you might have influxDB write issue selecting high count of files.  
-> I am on it for fixing. Any help are welcome.
+
 
 # Todos
-> - Make Grafana Dashboard(s) & Data source configuration automatically imported 
-> - Use Grafana variable to help finding the flights saved into the InfluxDB.
+- [ ] Fix InfluxDB write error having huge file count in import. 
+- [ ] Make Grafana Dashboard(s) & Data source configuration automatically imported 
+- [ ] Use Grafana variable to help finding the flights saved into the InfluxDB.
 
 Have a safe flights.  
 Laurent
