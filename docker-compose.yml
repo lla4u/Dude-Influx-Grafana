@@ -27,19 +27,18 @@ services:
       - 3000:3000
     volumes:
       # provision datasource & dashboard
-      - ./config/grafana/:/usr/share/grafana/conf/provisioning/
+      - ./config/grafana/:/etc/grafana/provisioning
       # save data on laptop
       - ./Docker/Grafana/data:/var/lib/grafana
     environment:
       - GF_INSTALL_PLUGINS=pr0ps-trackmap-panel
     depends_on:
       - influxdb
-
   cli:
-    build: .
-    container_name: dude-cli
-    tty: true
-    volumes:
-      - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/home/node/sessions
-    depends_on:
-      - influxdb
+     build: .
+     container_name: dude-cli
+     tty: true
+     volumes:
+       - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/home/node/sessions
+     depends_on:
+       - influxdb

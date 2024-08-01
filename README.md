@@ -71,11 +71,14 @@ https://docs.docker.com/get-docker/
 > 2. Press button 7 & 8 Simultaneously for few seconds to startup the dynon setup screen
 > 3. Navigate to ...
 
+> [!IMPORTANT]
+> Datalog storage is limited due to Dynon automatic file rewrite. So collect every 8 flight hours or so.
+
 ## Importing datalog into InfluxDB
 > 1. copy the usb key csv file(s) (USER_DATA_LOG.csv) into your datalogs directory
 > 2. from teminal or cmd or powershell (windows) execute docker run -it dude-cli bash
 > 3. Select the file(s) from the provided list (space bar) and press Enter to import ...
->
+  
 > [!CAUTION]
 > Depending your laptop you might have influxDB write issue selecting high count of files.  
 
