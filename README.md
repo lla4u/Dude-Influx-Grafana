@@ -72,6 +72,8 @@ https://docs.docker.com/get-docker/
 > 3. Navigate to SYSTEM SOFTWARE -> EXPORT USER DATA LOGS 
 > 4. (Otional) Define label
 > 5. Export pressing button 8
+> 
+> Video: https://www.youtube.com/watch?v=fS6H_8gNd90&ab_channel=RobertHamilton
 
 > [!IMPORTANT]
 > Dynon datalog storage is limited and file is rewrited. So collect around every 8 hours flight or so not to loose information.
