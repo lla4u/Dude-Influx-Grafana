@@ -6,5 +6,6 @@ RUN npm install --production --silent && mv node_modules ../
 COPY . .
 EXPOSE 3000
 RUN chown -R node /usr/src/app
+RUN chmod +x dudeloader.mjs
 USER node
 CMD ["node"]

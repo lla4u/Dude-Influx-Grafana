@@ -80,7 +80,7 @@ https://docs.docker.com/get-docker/
 
 ## Importing datalog into InfluxDB
 > 1. copy the usb key csv file(s) (USER_DATA_LOG.csv) into your datalogs directory
-> 2. from teminal or cmd or powershell (windows) execute docker exec -it dude-cli dudeloader.mjs
+> 2. from teminal or cmd or powershell (windows) execute: docker exec -it dude-cli ./dudeloader.mjs 
 > 3. Select the file(s) from the provided list (space bar) and press Enter to import selected file(s).
   
 > [!CAUTION]
