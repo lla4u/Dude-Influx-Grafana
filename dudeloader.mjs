@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import chalk from "chalk" // Chain styles
 import clear from "clear" // Clear screen
 import figlet from "figlet" // Create ASCII Art from text 
