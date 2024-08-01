@@ -69,10 +69,12 @@ https://docs.docker.com/get-docker/
 > ( I use the same usb key that for the plates and map updates ...)
 > 1. Fire up your HDX
 > 2. Press button 7 & 8 Simultaneously for few seconds to startup the dynon setup screen
-> 3. Navigate to ...
+> 3. Navigate to SYSTEM SOFTWARE -> EXPORT USER DATA LOGS 
+> 4. (Otional) Define label
+> 5. Export pressing button 8
 
 > [!IMPORTANT]
-> Datalog storage is limited due to Dynon automatic file rewrite. So collect every 8 flight hours or so.
+> Dynon datalog storage is limited and file is rewrited. So collect around every 8 hours flight or so not to loose information.
 
 ## Importing datalog into InfluxDB
 > 1. copy the usb key csv file(s) (USER_DATA_LOG.csv) into your datalogs directory
@@ -85,7 +87,7 @@ https://docs.docker.com/get-docker/
 
 # Todos
 - [ ] Fix InfluxDB write error having huge file count in import. 
-- [ ] Make Grafana Dashboard(s) & Data source configuration automatically imported 
+- [x] Make Grafana Dashboard(s) & Data source configuration automatically imported 
 - [ ] Use Grafana variable to help finding the flights saved into the InfluxDB.
 
 Have a safe flights.  
