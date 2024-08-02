@@ -81,7 +81,9 @@ https://docs.docker.com/get-docker/
 ## Importing datalog into InfluxDB
 > 1. copy the usb key csv file(s) (USER_DATA_LOG.csv) into your datalogs directory
 > 2. from teminal or cmd or powershell (windows) execute: docker exec -it dude-cli ./dudeloader.mjs 
+> ![Screenshot of cli select datalogs.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_cli_datalogs_select.png)
 > 3. Select the file(s) from the provided list (space bar) and press Enter to import selected file(s).
+> ![Screenshot of cli import datalog(s) result.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_cli_import_result.png)
   
 > [!CAUTION]
 > Depending your laptop you might have influxDB write issue selecting high count of files.  
