@@ -1,20 +1,20 @@
 services:
   influxdb:
-    image: influxdb:latest
+    image: influxdb:2.7.8-alpine
     container_name: dude-influxdb
     restart: unless-stopped
     ports:
       - 8086:8086
-    volumes:
-      - ./Docker/InfluxDB/data:/var/lib/influxdb2
-      - ./Docker/InfluxDB/config:/etc/influxdb2
+    # volumes:
+    #   - ./Docker/InfluxDB/data:/var/lib/influxdb2
+    #   - ./Docker/InfluxDB/config:/etc/influxdb2
     environment:
-      - DOCKER_INFLUXDB_INIT_MODE=setup
-      - DOCKER_INFLUXDB_INIT_USERNAME=dude
-      - DOCKER_INFLUXDB_INIT_PASSWORD=dudedudedude
-      - DOCKER_INFLUXDB_INIT_ORG=dude
-      - DOCKER_INFLUXDB_INIT_BUCKET=dude
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=my-super-secret-auth-token
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: ${INFLUXDB_USERNAME}
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${INFLUXDB_PASSWORD}
+      DOCKER_INFLUXDB_INIT_ORG: dude
+      DOCKER_INFLUXDB_INIT_BUCKET: dude
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: my-super-secret-auth-token
 
   grafana:
     image: grafana/grafana:7.5.6
@@ -37,8 +37,8 @@ services:
   cli:
      build: .
      container_name: dude-cli
-     tty: true
+     tty: true  
      volumes:
-       - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/home/node/sessions
+       - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/mnt
      depends_on:
        - influxdb
