@@ -15,11 +15,12 @@ for troubleshooting.
 >  - ...
 
 ## What are the dependencies
-> - InfluxDB for timed long term storage
+> This Docker stack use: 
+> - InfluxDB for timed long term storage database
 > - Gafana for data presentation
-> - Nodejs for onboarding Dynon datalogs into InfluxDB.
+> - Linux shell using go program for onboarding Dynon datalogs into InfluxDB.
 >
-> All of them are open source and free for personal usage.
+> All of the selected are open source and free for personal usage.
 
 ## What is provided
 > A local web interface to query flight data shuch as:
@@ -88,11 +89,15 @@ https://docs.docker.com/get-docker/
 > Optional verbose mode:
 >   ./dude-cli -file <path_to_file_you_want_to_load_into_the_stack> -verbose
 > ![Screenshot of dude-cli.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_dude-cli.png)
+> Onboarding datalogs required 26.54 seconds (mostly due to poor Influxdb synchrone writes)
+> Submited file is having 84347 rows
+> Import saved 19350 rows in database.
 
 # Todos
 - [x] Fix InfluxDB write error having huge file count in import. (Fixed using synchrone write and go)
 - [x] Make Grafana Dashboard(s) & Data source configuration automatically imported 
 - [ ] Use Grafana variable to help finding the flights saved into the InfluxDB.
+- [ ] Improve dude-cli UI.
 
 Have a safe flights.  
 Laurent
