@@ -23,7 +23,7 @@ for troubleshooting.
 
 ## What is provided
 > A local web interface to query flight data shuch as:
-![Screenshot of web interface.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_web_Interface.png)
+> ![Screenshot of web interface.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_web_Interface.png)
 
 
 # Installation procedure
@@ -48,19 +48,20 @@ https://docs.docker.com/get-docker/
 
    IE: adapt the cli  
        volumes:  
-         - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/home/node/sessions  
+         - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/mnt 
        to 
-         - <Your datalogs directory path>:/home/node/sessions
+         - <Your datalogs directory path>:/mnt
 
-5. docker-compose up -d --build
+5. build the Docker stack using: 
+   docker-compose --env-file config.env up --build -d 
    or 
-   docker compose up -d --build (for recent docker version)
+   docker compose --env-file config.env up --build -d  (for recent docker version)
 
    after a while (depending your network speed) 3 containers will be created and available.
 ```
 
 # Adding HDX datalogs to the solution
-> Adding datalogs in the solution is made in two steps:
+> Adding datalogs in the solution is done within two steps:
 > - Collect datalog from the HDX
 > - Import the datalogs into Influxdb using dude-cli container.
 
@@ -76,21 +77,20 @@ https://docs.docker.com/get-docker/
 > Video: https://www.youtube.com/watch?v=fS6H_8gNd90&ab_channel=RobertHamilton
 
 > [!IMPORTANT]
-> Dynon datalog storage is limited and file is rewrited. So collect around every 8 hours flight or so not to loose information.
+> Dynon datalog storage is limited and file is rewrited. So collect datalogs around every 8 flight hours or accept to loose information.
 
-## Importing datalog into InfluxDB
+## Importing datalog into dude stack
 > 1. copy the usb key csv file(s) (USER_DATA_LOG.csv) into your datalogs directory
-> 2. from teminal or cmd or powershell (windows) execute: docker exec -it dude-cli ./dudeloader.mjs 
-> ![Screenshot of cli select datalogs.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_cli_datalogs_select.png)
-> 3. Select the file(s) from the provided list (space bar) and press Enter to import selected file(s).
-> ![Screenshot of cli import datalog(s) result.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_cli_import_result.png)
-  
-> [!CAUTION]
-> Depending your laptop you might have influxDB write issue selecting high count of files.  
-
+> 2. from teminal or cmd or powershell (windows) execute: docker exec -it dude-cli /bin/ash 
+> 
+> 3. execute:
+>   ./dude-cli -file <path_to_file_you_want_to_load_into_the_stack>
+> Optional verbose mode:
+>   ./dude-cli -file <path_to_file_you_want_to_load_into_the_stack> -verbose
+> ![Screenshot of dude-cli.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_dude-cli.png)
 
 # Todos
-- [ ] Fix InfluxDB write error having huge file count in import. 
+- [x] Fix InfluxDB write error having huge file count in import. (Fixed using synchrone write and go)
 - [x] Make Grafana Dashboard(s) & Data source configuration automatically imported 
 - [ ] Use Grafana variable to help finding the flights saved into the InfluxDB.
 

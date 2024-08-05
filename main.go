@@ -235,7 +235,10 @@ func ConnectToInfluxDB() (influxdb2.Client, error) {
 func StringToFloat(s string) float64 {
 	f, err := strconv.ParseFloat(s, 64)
 	if err != nil {
-		log.Println(err)
+		// log only in verbose mode
+		if verboseFlag {
+			log.Println(err)
+		}
 	}
 	return f
 }
@@ -243,7 +246,9 @@ func StringToFloat(s string) float64 {
 func StringToInt(s string) int {
 	f, err := strconv.Atoi(s)
 	if err != nil {
-		log.Println(err)
+		if verboseFlag {
+			log.Println(err)
+		}
 	}
 	return f
 }
