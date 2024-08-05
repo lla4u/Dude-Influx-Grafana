@@ -145,6 +145,7 @@ func main() {
 					AddField("GS", StringToFloat(r.GroundSpeed_Knots)).
 					AddField("IAS", StringToFloat(r.IndicatedAirspeed_Knots)).
 					AddField("TAS", StringToFloat(r.TrueAirspeed_Knots)).
+					AddField("VSpeed", StringToInt(r.VerticalSpeed_ft_min)).
 					//
 					AddField("Volts", StringToFloat(r.Volts)).
 					AddField("Amps", StringToFloat(r.Amps)).
