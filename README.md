@@ -8,24 +8,24 @@ layouts. Data is sourced from various connected modules and devices.
 exported for analysis by the owner, and a high-resolution datalog which can be used by Dynon
 for troubleshooting. 
 >
-> This tooling intend to use on an easy and efficient way the datalogs to:  
->  - Provide long term flight history,
->  - Provide capability to display flight map and related parameters for improving pilote usage and safety,
->  - Provide accurate informations like what is my average speed to considere preparing flight, what is my average landing speed,
+> This tool provide an easy and efficient way to enlighten the datalogs for:  
+>  - Providing long term flight history,
+>  - Providing capability to display flight map and related parameters for improving pilote usage and safety,
+>  - Providing accurate informations like what is my average speed to considere preparing flight, what is my average landing speed,
 >  - ...
 
 ## What are the dependencies
-> This Docker stack use: 
-> - InfluxDB for timed long term storage database
+> This tool use:
+> - Docker for containers and network management
+> - Influx database for timed long term storage
 > - Gafana for data presentation
-> - Linux shell using go program for onboarding Dynon datalogs into InfluxDB.
+> - Linux shell using a go program for onboarding Dynon datalogs into database.
 >
 > All of the selected are open source and free for personal usage.
 
 ## What is provided
 > A local web interface to query flight data shuch as:
 > ![Screenshot of web interface.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_web_Interface.png)
-
 
 # Installation procedure
 
@@ -34,37 +34,39 @@ Depending your operating system download and install docker software.
 https://docs.docker.com/get-docker/
 
 
-## 2 - Dude
+## 2 - Building Dude stack
 ```
-1. go to your laptop install root directory (cd /home/lla/servers/ ) then execute:
+1. Where to sit the stack:
+   Open terminal, cmd and create your home install directory 
+   cd /home/lla 
+   mkdir dude 
+   then move into: 
+   cd dude
 
-2. git clone https://github.com/lla4u/Dude-Influx-Grafana.git
+2. Clone de github
+   git clone https://github.com/lla4u/Dude-Influx-Grafana.git
    or
    Download and unzip zip archive downloaded from github.
 
 3. change directory to Dude-Influx-Grafana
    cd Dude-Influx-Grafana
 
-4. Adapt the docker-compose.yml file to fit with your source datalogs directory ( where you plan  to store the Dynon files ).  
-
-   IE: adapt the cli  
-       volumes:  
-         - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/mnt 
-       to 
-         - <Your datalogs directory path>:/mnt
-
-5. build the Docker stack using: 
+4. Build the Docker stack using: 
    docker-compose --env-file config.env up --build -d 
    or 
    docker compose --env-file config.env up --build -d  (for recent docker version)
 
-   after a while (depending your network speed) 3 containers will be created and available.
+   after a while (mostly depending your network bandwith) 3 containers will be created and available.
+5. Check:
+   execute docker ps from the terminal
+
+   Having 3 conainers running you are good to go further ...
 ```
 
 # Adding HDX datalogs to the solution
-> Adding datalogs in the solution is done within two steps:
-> - Collect datalog from the HDX
-> - Import the datalogs into Influxdb using dude-cli container.
+> Adding datalogs in the tool is in two steps:
+> - First, Collect datalog from the HDX
+> - Second, Import the datalogs into Influxdb using dude-cli container.
 
 ## Collecting datalog from the HDX
 > Collecting datalog from the HDX is quite trivial and require usb key plugged into the Dynon:
@@ -78,26 +80,30 @@ https://docs.docker.com/get-docker/
 > Video: https://www.youtube.com/watch?v=fS6H_8gNd90&ab_channel=RobertHamilton
 
 > [!IMPORTANT]
-> Dynon datalog storage is limited and file is rewrited. So collect datalogs around every 8 flight hours or accept to loose information.
+> Dynon datalog storage is limited and rewrited over time. So collect datalogs around every 8 flight hours or accept to loose information.
 
 ## Importing datalog into dude stack
-> 1. copy the usb key csv file(s) (USER_DATA_LOG.csv) into your datalogs directory
-> 2. from teminal or cmd or powershell (windows) execute: docker exec -it dude-cli /bin/ash 
+> 1. Copy the usb key csv file(s) (USER_DATA_LOG.csv) into the datalogs directory
+> 2. From teminal or cmd or powershell (windows) execute: 
+     docker exec -it dude-cli /bin/ash
 > 
-> 3. execute:
+> 3. Execute:
 >   ./dude-cli -file <path_to_file_you_want_to_load_into_the_stack>
-> Optional verbose mode:
+>   Optional verbose mode:
 >   ./dude-cli -file <path_to_file_you_want_to_load_into_the_stack> -verbose
 > ![Screenshot of dude-cli.](https://github.com/lla4u/Dude-Influx-Grafana/blob/main/Screenshots/Screenshot_dude-cli.png)
-> Onboarding datalogs required 26.54 seconds (mostly due to poor Influxdb synchrone writes)
-> Submited file is having 84347 rows
-> Import saved 19350 rows in database.
+>
+> Onboarding datalogs required 26.54 seconds (mostly due to poor Influxdb synchrone writes)  
+> Submited file is having 84347 csv rows  
+> Import saved 19350 rows in database.  
 
-# Todos
-- [x] Fix InfluxDB write error having huge file count in import. (Fixed using synchrone write and go)
+
+# Ongoing
+- [x] Fix InfluxDB write error having huge file count in import. (Fixed using synchrone write and go instead nodejs)
 - [x] Make Grafana Dashboard(s) & Data source configuration automatically imported 
 - [ ] Use Grafana variable to help finding the flights saved into the InfluxDB.
-- [ ] Improve dude-cli UI.
+- [ ] Improve dude-cli performance and UI.
+- [ ] Create document for helping users to use the Grafana UI and look at the Dynon datalogs.
 
 Have a safe flights.  
 Laurent

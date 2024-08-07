@@ -39,6 +39,6 @@ services:
      container_name: dude-cli
      tty: true  
      volumes:
-       - /Users/lla/Documents/Laurent/Aviation/P300 Dude:/mnt
+       - ./Datalogs:/mnt
      depends_on:
        - influxdb
